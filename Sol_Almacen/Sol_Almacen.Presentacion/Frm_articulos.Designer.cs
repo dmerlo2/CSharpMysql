@@ -48,6 +48,9 @@
             this.Btn_Eliminar = new System.Windows.Forms.Button();
             this.Btn_Reporte = new System.Windows.Forms.Button();
             this.Btn_Salir = new System.Windows.Forms.Button();
+            this.Btn_buscar = new System.Windows.Forms.Button();
+            this.Txt_buscar = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_articulos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,7 +120,7 @@
             this.Btn_lupa_um.Name = "Btn_lupa_um";
             this.Btn_lupa_um.Size = new System.Drawing.Size(32, 23);
             this.Btn_lupa_um.TabIndex = 7;
-            this.Btn_lupa_um.Text = "button1";
+            this.Btn_lupa_um.Text = "::";
             this.Btn_lupa_um.UseVisualStyleBackColor = true;
             // 
             // Btn_lupa_ca
@@ -126,7 +129,7 @@
             this.Btn_lupa_ca.Name = "Btn_lupa_ca";
             this.Btn_lupa_ca.Size = new System.Drawing.Size(32, 23);
             this.Btn_lupa_ca.TabIndex = 10;
-            this.Btn_lupa_ca.Text = "button2";
+            this.Btn_lupa_ca.Text = "::";
             this.Btn_lupa_ca.UseVisualStyleBackColor = true;
             // 
             // txt_categoria_ar
@@ -147,7 +150,7 @@
             // 
             // txt_stock_actual
             // 
-            this.txt_stock_actual.Location = new System.Drawing.Point(326, 102);
+            this.txt_stock_actual.Location = new System.Drawing.Point(95, 86);
             this.txt_stock_actual.Name = "txt_stock_actual";
             this.txt_stock_actual.Size = new System.Drawing.Size(68, 20);
             this.txt_stock_actual.TabIndex = 12;
@@ -155,7 +158,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(253, 105);
+            this.label5.Location = new System.Drawing.Point(22, 89);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 13);
             this.label5.TabIndex = 11;
@@ -163,16 +166,16 @@
             // 
             // Btn_Cancelar
             // 
-            this.Btn_Cancelar.Location = new System.Drawing.Point(279, 154);
+            this.Btn_Cancelar.Location = new System.Drawing.Point(239, 124);
             this.Btn_Cancelar.Name = "Btn_Cancelar";
             this.Btn_Cancelar.Size = new System.Drawing.Size(75, 23);
             this.Btn_Cancelar.TabIndex = 13;
-            this.Btn_Cancelar.Text = "C ancelar";
+            this.Btn_Cancelar.Text = "Cancelar";
             this.Btn_Cancelar.UseVisualStyleBackColor = true;
             // 
             // Btn_Guardar
             // 
-            this.Btn_Guardar.Location = new System.Drawing.Point(385, 154);
+            this.Btn_Guardar.Location = new System.Drawing.Point(345, 124);
             this.Btn_Guardar.Name = "Btn_Guardar";
             this.Btn_Guardar.Size = new System.Drawing.Size(75, 23);
             this.Btn_Guardar.TabIndex = 14;
@@ -224,11 +227,39 @@
             this.Btn_Salir.Text = "Salir";
             this.Btn_Salir.UseVisualStyleBackColor = true;
             // 
+            // Btn_buscar
+            // 
+            this.Btn_buscar.Location = new System.Drawing.Point(279, 165);
+            this.Btn_buscar.Name = "Btn_buscar";
+            this.Btn_buscar.Size = new System.Drawing.Size(32, 23);
+            this.Btn_buscar.TabIndex = 22;
+            this.Btn_buscar.Text = "::";
+            this.Btn_buscar.UseVisualStyleBackColor = true;
+            // 
+            // Txt_buscar
+            // 
+            this.Txt_buscar.Location = new System.Drawing.Point(65, 167);
+            this.Txt_buscar.Name = "Txt_buscar";
+            this.Txt_buscar.Size = new System.Drawing.Size(212, 20);
+            this.Txt_buscar.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(22, 170);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Buscar";
+            // 
             // Frm_articulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Btn_buscar);
+            this.Controls.Add(this.Txt_buscar);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.Btn_Salir);
             this.Controls.Add(this.Btn_Reporte);
             this.Controls.Add(this.Btn_Eliminar);
@@ -280,5 +311,8 @@
         private System.Windows.Forms.Button Btn_Eliminar;
         private System.Windows.Forms.Button Btn_Reporte;
         private System.Windows.Forms.Button Btn_Salir;
+        private System.Windows.Forms.Button Btn_buscar;
+        private System.Windows.Forms.TextBox Txt_buscar;
+        private System.Windows.Forms.Label label6;
     }
 }

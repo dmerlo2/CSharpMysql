@@ -17,8 +17,7 @@ namespace Sol_Almacen.Presentacion
             InitializeComponent();
         }
         #region "Mis métodos"
-
-       
+              
 
         private void Formato_ar()
         {
