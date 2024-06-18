@@ -35,7 +35,7 @@ namespace Sol_Almacen.Presentacion
                                         "; port=" + this.Puerto +
                                         ";username=" + this.Usuario +
                                         ";password=" + this.Clave +
-                                        ";Database=" + this.Base;
+                                        ";database=" + this.Base;
                 //Cadena.ConnectionString = "datasource=localhost; port=3306; username=root; password=s7Inu3V0;"
 
             }

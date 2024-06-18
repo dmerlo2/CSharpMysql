@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Relational;
 using Org.BouncyCastle.Asn1.X509;
 using System.Reflection;
-using Microsoft.SqlServer.Server;
+using System.Reflection.Emit;
 
 namespace Sol_Almacen.Presentacion
 {
@@ -38,10 +38,11 @@ namespace Sol_Almacen.Presentacion
                                     " inner join tb_unidades_medidas b on a.codigo_um=b.codigo_um " +
                                     " inner join tb_categorias c on a.codigo_ca=c.codigo_ca " +
                                     " where a.descripcion_ar Like '"+cTexto+"' "+
+                                    " and a.estado=1 "+
                                     " order by a.codigo_ar";
 
 
-                
+                //
 
                 MySqlCommand Comando = new MySqlCommand(sql_tarea, SqlCon);
                 Comando.CommandTimeout = 60;
@@ -60,46 +61,80 @@ namespace Sol_Almacen.Presentacion
             }
         }
 
+
         public string Guardar_ar(int nOpcion, P_Articulos oAr)
         {
             string Rpta = "";
-            string Sqltarea = "";
+            String Sqltarea = "";
             MySqlConnection SqlCon = new MySqlConnection();
             try
             {
-                SqlCon = Conexion.getInstancia().CrearConexion(); 
-                if (nOpcion == 1) //Nuevo registro
-                {
+                SqlCon = Conexion.getInstancia().CrearConexion();
 
-                    Sqltarea = "Insert into tb_articulos(descripcion_ar," +
-                                        " marca_ar," +
-                                        " codigo_um," +
-                                        " codigo_ca, " +
-                                        " stock_actual," +
-                                        " fecha_crea, " +
-                                        " fecha_modifica) " +
-                                    "values('" + oAr.Descripcion_ar + "' " +
-                                            "'" + oAr.Marca_ar+"'" +
-                                            "'" + oAr.Codigo_um + "'" +
-                                            "'" + oAr.Codigo_ca + "'" +
-                                            "'" + oAr.Stock_actual + "'" +
-                                            "'" + oAr.Fecha_crea + "'" +
-                                            "'" + oAr.Fecha_modifica + "')";
-                }
-                else //Actualizar Registro
+                if (nOpcion == 1) // Nuevo registro
                 {
-                    Sqltarea = "update tb_articulos set descripcion_ar='" + oAr.Descripcion_ar + "'," +
-                                                     "marca_ar='" + oAr.Marca_ar + "'," +
-                                                     "codigo_um='" + oAr.Codigo_um + "'," +
-                                                     "codigo_ca='" + oAr.Codigo_ca + "'," +
-                                                     "stock_actual='" + oAr.Stock_actual + "'," +
-                                                     "fecha_modifica='" + oAr.Fecha_modifica + "'," +
-                                                     " where codigo_ar='" + oAr.Codigo_ar + "'";
-                }
+                    Sqltarea = "insert into tb_articulos(descripcion_ar," +
+                                    "marca_ar," +
+                                    "codigo_um," +
+                                    "codigo_ca," +
+                                    "stock_actual," +
+                                    "fecha_crea," +
+                                    "fecha_modifica, " +
+                                    "estado)"+
+                                    " values ('" + oAr.Descripcion_ar + "', " +
+                                            "'" + oAr.Marca_ar + "', " +
+                                            "'" + oAr.Codigo_um + "', " +
+                                            "'" + oAr.Codigo_ca + "', " +
+                                            "'" + oAr.Stock_actual + "', " +
+                                            "'" + oAr.Fecha_crea + "', " +
+                                            "'" + oAr.Fecha_modifica + "',1) ";
 
+
+                    //
+                }
+                else // Actualizar Registro
+                {
+                    Sqltarea = "update tb_articulos set descripcion_ar='"+oAr.Descripcion_ar+"'," +
+                                                      "marca_ar='" + oAr.Marca_ar + "'," +
+                                                      "codigo_um='" + oAr.Codigo_um + "'," +
+                                                      "codigo_ca='" + oAr.Codigo_ca + "'," +
+                                                      "stock_actual='" + oAr.Stock_actual + "'," +
+                                                      "fecha_modifica='" + oAr.Fecha_modifica + "'" +
+                                                      " where codigo_ar='" + oAr.Codigo_ar + "'";
+
+
+                }
                 MySqlCommand Comando = new MySqlCommand(Sqltarea, SqlCon);
                 SqlCon.Open();
                 Rpta = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo ingresar el registro";
+             
+            }
+            catch (Exception ex)
+            {
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+        }
+
+        public string Eliminart_ar(int nCodigo_ar)
+        {
+            string Rpta = "";
+            String Sqltarea = "";
+            MySqlConnection SqlCon = new MySqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                //Sqltarea = "delete from tb_articulos where codigo_ar='" +nCodigo_ar+ "'";
+                Sqltarea = "update tb_articulos set estado=0 where codigo_ar='" + nCodigo_ar + "'";
+
+                MySqlCommand Comando = new MySqlCommand(Sqltarea, SqlCon);
+                SqlCon.Open();
+                Rpta = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo eliminar el registro";
+
             }
             catch (Exception ex)
             {
