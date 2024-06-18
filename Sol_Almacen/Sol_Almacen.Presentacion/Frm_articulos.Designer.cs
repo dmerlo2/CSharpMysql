@@ -33,11 +33,11 @@
             this.txt_descripcion_ar = new System.Windows.Forms.TextBox();
             this.txt_marca_ar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt_medida_ar = new System.Windows.Forms.TextBox();
+            this.Txt_descripcion_um = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Btn_lupa_um = new System.Windows.Forms.Button();
             this.Btn_lupa_ca = new System.Windows.Forms.Button();
-            this.txt_categoria_ar = new System.Windows.Forms.TextBox();
+            this.Txt_descripcion_ca = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_stock_actual = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -79,6 +79,7 @@
             // 
             this.txt_descripcion_ar.Location = new System.Drawing.Point(65, 6);
             this.txt_descripcion_ar.Name = "txt_descripcion_ar";
+            this.txt_descripcion_ar.ReadOnly = true;
             this.txt_descripcion_ar.Size = new System.Drawing.Size(246, 20);
             this.txt_descripcion_ar.TabIndex = 2;
             // 
@@ -86,6 +87,7 @@
             // 
             this.txt_marca_ar.Location = new System.Drawing.Point(394, 10);
             this.txt_marca_ar.Name = "txt_marca_ar";
+            this.txt_marca_ar.ReadOnly = true;
             this.txt_marca_ar.Size = new System.Drawing.Size(246, 20);
             this.txt_marca_ar.TabIndex = 4;
             // 
@@ -98,12 +100,13 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Marca";
             // 
-            // txt_medida_ar
+            // Txt_descripcion_um
             // 
-            this.txt_medida_ar.Location = new System.Drawing.Point(65, 51);
-            this.txt_medida_ar.Name = "txt_medida_ar";
-            this.txt_medida_ar.Size = new System.Drawing.Size(212, 20);
-            this.txt_medida_ar.TabIndex = 6;
+            this.Txt_descripcion_um.Location = new System.Drawing.Point(65, 51);
+            this.Txt_descripcion_um.Name = "Txt_descripcion_um";
+            this.Txt_descripcion_um.ReadOnly = true;
+            this.Txt_descripcion_um.Size = new System.Drawing.Size(212, 20);
+            this.Txt_descripcion_um.TabIndex = 6;
             // 
             // label3
             // 
@@ -132,12 +135,13 @@
             this.Btn_lupa_ca.Text = "::";
             this.Btn_lupa_ca.UseVisualStyleBackColor = true;
             // 
-            // txt_categoria_ar
+            // Txt_descripcion_ca
             // 
-            this.txt_categoria_ar.Location = new System.Drawing.Point(385, 49);
-            this.txt_categoria_ar.Name = "txt_categoria_ar";
-            this.txt_categoria_ar.Size = new System.Drawing.Size(212, 20);
-            this.txt_categoria_ar.TabIndex = 9;
+            this.Txt_descripcion_ca.Location = new System.Drawing.Point(385, 49);
+            this.Txt_descripcion_ca.Name = "Txt_descripcion_ca";
+            this.Txt_descripcion_ca.ReadOnly = true;
+            this.Txt_descripcion_ca.Size = new System.Drawing.Size(212, 20);
+            this.Txt_descripcion_ca.TabIndex = 9;
             // 
             // label4
             // 
@@ -152,6 +156,7 @@
             // 
             this.txt_stock_actual.Location = new System.Drawing.Point(95, 86);
             this.txt_stock_actual.Name = "txt_stock_actual";
+            this.txt_stock_actual.ReadOnly = true;
             this.txt_stock_actual.Size = new System.Drawing.Size(68, 20);
             this.txt_stock_actual.TabIndex = 12;
             // 
@@ -172,6 +177,8 @@
             this.Btn_Cancelar.TabIndex = 13;
             this.Btn_Cancelar.Text = "Cancelar";
             this.Btn_Cancelar.UseVisualStyleBackColor = true;
+            this.Btn_Cancelar.Visible = false;
+            this.Btn_Cancelar.Click += new System.EventHandler(this.Btn_Cancelar_Click);
             // 
             // Btn_Guardar
             // 
@@ -181,6 +188,8 @@
             this.Btn_Guardar.TabIndex = 14;
             this.Btn_Guardar.Text = "Guardar";
             this.Btn_Guardar.UseVisualStyleBackColor = true;
+            this.Btn_Guardar.Visible = false;
+            this.Btn_Guardar.Click += new System.EventHandler(this.Btn_Guardar_Click);
             // 
             // Btn_Nuevo
             // 
@@ -190,6 +199,7 @@
             this.Btn_Nuevo.TabIndex = 15;
             this.Btn_Nuevo.Text = "Nuevo";
             this.Btn_Nuevo.UseVisualStyleBackColor = true;
+            this.Btn_Nuevo.Click += new System.EventHandler(this.Btn_Nuevo_Click);
             // 
             // Btn_Actualizar
             // 
@@ -235,6 +245,7 @@
             this.Btn_buscar.TabIndex = 22;
             this.Btn_buscar.Text = "::";
             this.Btn_buscar.UseVisualStyleBackColor = true;
+            this.Btn_buscar.Click += new System.EventHandler(this.Btn_buscar_Click);
             // 
             // Txt_buscar
             // 
@@ -270,10 +281,10 @@
             this.Controls.Add(this.txt_stock_actual);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Btn_lupa_ca);
-            this.Controls.Add(this.txt_categoria_ar);
+            this.Controls.Add(this.Txt_descripcion_ca);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Btn_lupa_um);
-            this.Controls.Add(this.txt_medida_ar);
+            this.Controls.Add(this.Txt_descripcion_um);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txt_marca_ar);
             this.Controls.Add(this.label2);
@@ -296,11 +307,11 @@
         private System.Windows.Forms.TextBox txt_descripcion_ar;
         private System.Windows.Forms.TextBox txt_marca_ar;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_medida_ar;
+        private System.Windows.Forms.TextBox Txt_descripcion_um;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Btn_lupa_um;
         private System.Windows.Forms.Button Btn_lupa_ca;
-        private System.Windows.Forms.TextBox txt_categoria_ar;
+        private System.Windows.Forms.TextBox Txt_descripcion_ca;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt_stock_actual;
         private System.Windows.Forms.Label label5;
